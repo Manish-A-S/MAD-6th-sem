@@ -129,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
                     display.setText("");
                     result=0;
                     flag=0;
+                    sym=-1;
             }
         });
 
@@ -172,25 +173,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void compute() {
-        if(sym!=-1){
+        double value=Double.valueOf(display.getText().toString());
             switch (sym){
-                case 0 :    result /= Double.valueOf(display.getText().toString());
-                    display.setText(""+result);
+                case 0 :    result /= value;
                     break;
-                case 1 :    result *= Double.valueOf(display.getText().toString());
-                    display.setText(""+result);
+                case 1 :    result *= value;
                     break;
-                case 2 :    result += Double.valueOf(display.getText().toString());
-                    display.setText(""+result);
+                case 2 :    result += value;
                     break;
-                case 3 :    result -= Double.valueOf(display.getText().toString());
-                    display.setText(""+result);
+                case 3 :    result -= value;
                     break;
             }
-        }
+        display.setText(""+result);
         flag=1;
-    }
-
+        }
+    
     private void copy() {
 
         if(flag==1) {
