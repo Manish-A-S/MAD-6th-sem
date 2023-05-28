@@ -44,16 +44,16 @@ public class MainActivity extends AppCompatActivity {
                     drawable=getResources().getDrawable(R.drawable.img1);
                     prev=2;
                 }else if (prev==2){
-                    drawable=getResources().getDrawable(R.drawable.img1);
+                    drawable=getResources().getDrawable(R.drawable.img2);
                     prev=3;
                 }else if (prev==3){
-                    drawable=getResources().getDrawable(R.drawable.img1);
+                    drawable=getResources().getDrawable(R.drawable.img3);
                     prev=4;
                 }else if (prev==4){
-                    drawable=getResources().getDrawable(R.drawable.img1);
+                    drawable=getResources().getDrawable(R.drawable.img4);
                     prev=5;
                 }else if (prev==5){
-                    drawable=getResources().getDrawable(R.drawable.img1);
+                    drawable=getResources().getDrawable(R.drawable.img5);
                     prev=1;
                 }
                 Bitmap Wallpaper=((BitmapDrawable)drawable).getBitmap();
