@@ -1,4 +1,6 @@
-package com.example.calc;
+package com.example.calculator;
+
+import static java.lang.Integer.parseInt;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,197 +8,95 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    EditText display;
-    Button b1,b2,b3,b4,b5,b6,b7,b8,b9,b0;
-//    Button b2;
-//    Button b3;
-//    Button b4;
-//    Button b5;
-//    Button b6;
-//    Button b7;
-//    Button b8;
-//    Button b9;
-//    Button b0;
-    Button bp;
-    Button bm;
-    Button bmu;
-    Button bd;
-    Button be;
-    Button bc;
-    double result=0;
-    int flag=0;
-    int sym=-1;
+
+    EditText tv;
+    Button clear;
+    int num1,num2;
+    String sym;
+    String text="";
+    int result;
+    String[] num ={};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        tv=findViewById(R.id.editTextText);
+        clear=findViewById(R.id.button11);
 
-        display=findViewById(R.id.eText);
-        b1=findViewById(R.id.b1);
-        b2=findViewById(R.id.b2);
-        b3=findViewById(R.id.b3);
-        b4=findViewById(R.id.b4);
-        b5=findViewById(R.id.b5);
-        b6=findViewById(R.id.b6);
-        b7=findViewById(R.id.b7);
-        b8=findViewById(R.id.b8);
-        b9=findViewById(R.id.b9);
-        b0=findViewById(R.id.b0);
-        bp=findViewById(R.id.bplus);
-        bm=findViewById(R.id.bminus);
-        bmu=findViewById(R.id.bmul);
-        bd=findViewById(R.id.bdiv);
-        be=findViewById(R.id.bres);
-        bc=findViewById(R.id.bclear);
-
-
-        b1.setOnClickListener(new View.OnClickListener() {
+        clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                copy();
-                display.setText(display.getText().toString()+b1.getText().toString());
-            }
-
-        });
-        b2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                copy();
-                display.setText(display.getText().toString()+b2.getText().toString());
+                tv.setText("");
+                String[] num ={};
+                int result=0;
+                text="";
+                sym="";
             }
         });
-        b3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                copy();
-                display.setText(display.getText().toString()+b3.getText().toString());
-            }
-        });
-        b4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                copy();
-                display.setText(display.getText().toString()+b4.getText().toString());
-            }
-        });
-        b5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                copy();
-                display.setText(display.getText().toString()+b5.getText().toString());
-            }
-        });
-        b6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                copy();
-                display.setText(display.getText().toString()+b6.getText().toString());
-            }
-        });
-        b7.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                copy();
-                display.setText(display.getText().toString()+b7.getText().toString());
-            }
-        });
-        b8.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                copy();
-                display.setText(display.getText().toString()+b8.getText().toString());
-            }
-        });
-        b9.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                copy();
-                display.setText(display.getText().toString()+b9.getText().toString());
-            }
-        });
-        b0.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                copy();
-                display.setText(display.getText().toString()+b0.getText().toString());
-            }
-        });
-        bc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                    display.setText("");
-                    result=0;
-                    flag=0;
-            }
-        });
-
-        be.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                compute();
-                sym=-1;
-            }
-        });
-
-        bp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                compute();
-                sym=2;
-            }
-        });
-        bm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                compute();
-                sym=3;
-            }
-        });
-        bmu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                compute();
-                sym=1;
-            }
-        });
-        bd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                compute();
-                sym=0;
-            }
-        });
-
     }
 
-    private void compute() {
-        if(sym!=-1){
-            switch (sym){
-                case 0 :    result /= Double.valueOf(display.getText().toString());
-                    display.setText(""+result);
-                    break;
-                case 1 :    result *= Double.valueOf(display.getText().toString());
-                    display.setText(""+result);
-                    break;
-                case 2 :    result += Double.valueOf(display.getText().toString());
-                    display.setText(""+result);
-                    break;
-                case 3 :    result -= Double.valueOf(display.getText().toString());
-                    display.setText(""+result);
-                    break;
-            }
+
+    public void calculate(View view){
+
+
+        switch(sym){
+            case "a": num= text.split("a");
+                break;
+
+            case "-":   num= text.split("-");
+                break;
+
+            case "/": num= text.split("/");
+                break;
+
+            case "m":  num= text.split("m");
+                break;
         }
-        flag=1;
+
+        num1= parseInt(num[0]);
+        num2= parseInt(num[1]);
+
+
+
+        switch(sym){
+            case "a":   result=num1+num2;
+                        tv.append("="+result);
+                        break;
+
+            case "-":   result=num1-num2;
+                        tv.append("="+result);
+                        break;
+
+            case "/":   result=num1/num2;
+                        tv.append("="+result);
+                        break;
+
+            case "m":   result=num1*num2;
+                        tv.append("="+result);
+                        break;
+        }
     }
 
-    private void copy() {
+    public void enter(View view){
+        Button btn=(Button)view;
+        String value = btn.getText().toString();
+        tv.append(value);
+        text=text.concat(value);
 
-        if(flag==1) {
-            result = Double.valueOf(display.getText().toString());
-            display.setText("");
-            flag=0;
+    }
+    public void symbols(View view){
+        Button btn=(Button)view;
+        sym=btn.getText().toString();
+        tv.append(sym);
+        switch(sym){
+            case "+": sym="a";
+                        break;
+            case "*": sym="m";
+                        break;
         }
+        text=text.concat(sym);
     }
 }
